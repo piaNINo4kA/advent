@@ -23,7 +23,9 @@ body
 	font-weight: 300
 	outline: none
 	border: none
-
+h1,h2,h3,h4,h5,h6
+	margin: 0
+	padding: 0
 ul
 	li
 		list-style: none
@@ -227,3 +229,32 @@ ul
 			font-size: 38px
 		p
 			margin: 10px auto	
+
+//howworks
+
+.how-works
+	display: flex
+	flex-direction: column
+	align-items: center
+	&-title
+		font-size: 38px
+	&-items
+		display: flex
+	&-item
+		background: #102C3C
+		position: relative
+		border-radius: 12px
+		max-width: 30% 
+		padding: 20px
+		display: flex
+		flex-direction: column
+		align-items: center
+		&__number
+			position: absolute
+			top: 0
+			left: 0
+			background-color: $rose
+			border-radius: 12px 0
+			padding: 10px
+	&__delimiter
+		width: 10%	
