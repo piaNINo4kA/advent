@@ -7,7 +7,6 @@ $fontMenuColor: #CAD3E1
 // $fontTitle: 
 // $fontContent:
 
-	
 	body
 	max-width: 100%
 	overflow-x: hidden
@@ -22,6 +21,7 @@ $fontMenuColor: #CAD3E1
 	max-width: 100%
 	font-weight: 300
 	outline: none
+	border: none
 
 ul
 	li
@@ -38,6 +38,14 @@ ul
 	width: 100%
 	max-width: 1200px
 
+.content
+	padding: 5% 10%
+	color: white
+
+.text
+	&_rose
+		color: $rose
+
 .button
 	display: flex
 	flex-direction: row
@@ -48,10 +56,21 @@ ul
 	height: 50px
 	border-radius: 10px
 	line-height: 1
-	border: none
-.rose-button
-	background-color: $rose		
+	font-weight: 600
+	font-size: 15px
+	text-transform: uppercase
+	cursor: pointer
+	-moz-transition: all 500ms
+	-o-transition: all 500ms
+	-webkit-transition: all 500ms
+	&:hover
+		transform: scale(1.05)
 
+	&_rose
+		background-color: $rose		
+	&_green
+		background-color: $green
+			
 //header
 .header
 	display: flex
@@ -119,3 +138,20 @@ ul
 			right: 10px
 			z-index: 2
 			position: absolute
+
+.main
+	background-image: url("../img/bg-image.jpg")
+	width: 100%
+	height: auto
+	background-size: cover
+	display: flex
+	justify-content: center
+	color: white
+	font-family: 'Jost'
+	font-weight: 800
+	font-size: 48px
+	align-items: center
+	&-content
+		width: 50%
+	&-image
+		width: 50%
