@@ -1,0 +1,121 @@
+$green: #01AF70
+$rose: #FF0960
+$bg: #1E1E1E
+$bgMenu: #0B1D27
+// $fontMenu: 
+$fontMenuColor: #CAD3E1
+// $fontTitle: 
+// $fontContent:
+
+	
+	body
+	max-width: 100%
+	overflow-x: hidden
+
+*, *:after, *:before
+	box-sizing: border-box
+	font-family: 'Montserrat', sans-serif
+	padding: 0
+	margin: 0
+	text-decoration: none
+	color: inherit
+	max-width: 100%
+	font-weight: 300
+	outline: none
+
+ul
+	li
+		list-style: none
+
+.wrap
+	width: 100%
+	display: flex
+	flex-direction: column
+	align-items: center
+	position: relative
+
+.container
+	width: 100%
+	max-width: 1200px
+
+.button
+	display: flex
+	flex-direction: row
+	justify-content: center
+	align-items: center
+	padding: 17px 30px
+	width: 240px
+	height: 50px
+	border-radius: 10px
+	line-height: 1
+	border: none
+.rose-button
+	background-color: $rose		
+
+//header
+.header
+	display: flex
+	background-color: $bgMenu
+	color: $fontMenuColor
+	height: 64px
+	align-items: center
+	justify-content: space-between
+	padding: 0 3%
+	.burger 
+		width: 24px 
+		z-index: 5 
+		&__line 
+			width: 100% 
+			height: 2px 
+			background: #fff 
+			border-radius: 32px 
+			margin-bottom: 5px 
+			transform-origin: 9% 50% 
+			transition: .2s 
+			&:nth-child(2) 
+				width: 70% 
+				&.active 
+					opacity: 0 
+					transition: .2s 
+			&:nth-child(1) 
+				&.active 
+					transform: rotate(45deg) 
+					transition: .2s 
+			&:nth-child(3) 
+				&.active 
+					transform: rotate(-45deg) 
+					transition: .2s
+	.menu
+		display: flex
+	.nav-list
+		display: flex
+		column-gap: 20px
+		text-transform: uppercase
+		font-style: normal
+		font-weight: 500
+		font-size: 14px
+		line-height: 140%
+		letter-spacing: 0.03em
+	.balance
+		&__select
+			display: flex
+			flex-direction: column
+			justify-content: center
+			align-items: center
+			padding: 12px 15px
+			width: 170px
+			height: 42px
+			background: rgba(255, 255, 255, 0.08)
+			border-radius: 10px
+	.ava
+		position: relative
+		&::before
+			content: ''
+			width: 10px
+			height: 10px
+			border-radius: 50%
+			background-color: $rose
+			top: 10px
+			right: 10px
+			z-index: 2
+			position: absolute

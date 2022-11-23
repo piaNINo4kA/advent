@@ -1,0 +1,35 @@
+include bemto/bemto.pug
+
+//- include partials
+
+//- general
+include _pages/general-page.pug
+include _partials/header.pug
+
+
+
+
+doctype html
+html
+	head
+		link(rel="shortcut icon" href="" type="image/png")
+		title title
+		
+		//- include style.css
+		link(rel="stylesheet" type="text/css" href="css/all_style.css")
+
+		link(href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet")
+		meta(charset="utf-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+
+	body
+		+header
+		+general-page
+
+
+
+
+		//- libs js
+		script(type="text/javascript" src="js/all_libs.js")
+		//- js
+		script(type="text/javascript" src="js/all_js.js")

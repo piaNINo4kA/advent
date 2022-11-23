@@ -1,0 +1,37 @@
+mixin header
+  +b.HEADER.header
+    +b.burger
+      +e.line
+      +e.line
+      +e.line
+    +e.IMG(src="img/main-logo-light.svg").logo 
+    +e.IMG(src="img/Union.svg").search
+    +b.menu 
+      +b.NAV.nav 
+        +b.UL.nav-list 
+          +e.LI.item 
+            +e.A(href="#").menu-link Sport
+          +e.LI.item 
+            +e.A(href="#").menu-link Cricket
+          +e.LI.item 
+            +e.A(href="#").menu-link Live Betting
+          +e.LI.item 
+            +e.A(href="#").menu-link Games
+          +e.LI.item 
+            +e.A(href="#").menu-link Live Casino
+          +e.LI.item 
+            +e.A(href="#").menu-link promotions
+          +e.LI.item 
+            +e.A(href="#").menu-link Tournaments
+    +e.IMG(src="img/notification-icon.svg").notifications 
+    +b.balance 
+      +e.SELECT.select
+        option 400 390 INR
+        option Test
+        option Test
+        option Test
+        option Test
+        option Test
+    +e.INPUT(type="button" value="Deposit").button.button.rose-button
+    +b.ava  
+      +e.IMG(src="img/image.png").item
