@@ -1,3 +1,6 @@
+include ./balance.pug
+
+
 mixin header
   +b.HEADER.header
     +b.burger
@@ -24,14 +27,7 @@ mixin header
           +e.LI.item 
             +e.A(href="#").menu-link Tournaments
     +e.IMG(src="img/notification-icon.svg").notifications 
-    +b.balance 
-      +e.SELECT.select
-        option 400 390 INR
-        option Test
-        option Test
-        option Test
-        option Test
-        option Test
+    +balance
     +e.INPUT(type="button" value="Deposit").button.button.button_green
     +b.ava  
       +e.IMG(src="img/image.png").item
