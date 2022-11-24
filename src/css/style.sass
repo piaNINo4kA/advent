@@ -2,31 +2,19 @@ $green: #01AF70
 $rose: #FF0960
 $bg: #1E1E1E
 $bgMenu: #0B1D27
-// $fontMenu: 
 $fontMenuColor: #CAD3E1
-// $fontTitle: 
-// $fontContent:
-
-
-//fonts
-
-@font-face 
-	font-family: 'Jost'
-	font-style: normal
-	font-weight: 500
-	font-size: 14px
-	src: url(../../src/fonts/Jost-VariableFont_wght.ttf)
 
 body
 	max-width: 100%
 	overflow-x: hidden
-	background-color: #1E1E1E
+	background-color: #0B1D27
 	color: white
 	font-family: 'Jost'
+	font-size: 18px
 
 *, *:after, *:before
 	box-sizing: border-box
-	font-family: 'Montserrat', sans-serif
+	font-family: 'Jost', sans-serif
 	padding: 0
 	margin: 0
 	text-decoration: none
@@ -56,13 +44,26 @@ ul
 .content
 	padding: 0 14.5%
 	color: white
+	
+.title
+	font-family: 'Jost'
+	font-style: normal
+	font-weight: 700
+	font-size: 38px
+	letter-spacing: -0.01em
+	&_main
+		font-weight: 800
+		font-size: 48px
+		line-height: 1.2
+		letter-spacing: -0.01em
 
 .text
 	&_rose
 		color: $rose
+		font-family: 'Jost'
 	&_bold
 		font-weight: 700
-		font-style: 16px
+		font-style: 18px
 
 .button
 	display: flex
@@ -81,12 +82,13 @@ ul
 	-moz-transition: all 500ms
 	-o-transition: all 500ms
 	-webkit-transition: all 500ms
+	letter-spacing: 0.1em
 	&_header
 		width: 7.5%
 		margin-right: 1%
 	&:hover
 		transform: scale(1.05)
-
+	
 	&_rose
 		background-color: $rose		
 	&_green
@@ -107,12 +109,12 @@ ul
 	width: 100%
 	&__notifications
 		margin-right: 3.1%
+	&__logo
+		margin-right: 5%	
 .burger 
 	width: 24px 
 	z-index: 5
 	margin-right: 1%
-	&__logo
-		margin-right: 5%
 	&__line 
 		width: 100% 
 		height: 2px 
@@ -144,7 +146,7 @@ ul
 		margin-right: 4.5%
 .nav-list
 	display: flex
-	column-gap: 33px
+	column-gap: 43px
 	text-transform: uppercase
 	font-style: normal
 	font-weight: 500
@@ -162,7 +164,7 @@ ul
 		cursor: pointer 
 		background: rgba(255, 255, 255, 0.08) 
 		width: 170px
-		margin-right: 1%
+		margin-right: 0.4%
 		&::after 
 			content: '' 
 			position: absolute 
@@ -220,18 +222,25 @@ ul
 	align-items: center
 	padding-top: 10%
 	padding-bottom: 10%
+	-webkit-box-shadow: inset 0px -135px 85px -47px rgba(11, 29, 39, 1)
+	-moz-box-shadow: inset 0px -135px 85px -47px rgba(11, 29, 39, 1)
+	box-shadow: inset 0px -135px 85px -47px rgba(11, 29, 39, 1)
 	&-content
 		width: 40%
 		&__text
 			line-height: 1.5
-			margin-bottom: 5%
-		h1, h1 span
-			font-weight: 800
-			font-size: 41px
+			margin-bottom: 6%
 	&-image
 		width: 45%
 		margin-top: 2%
-
+.control-left
+	position: absolute
+	left: 14.5%
+	top: 9%
+.control-bottom
+	position: absolute
+	left: 14.5%
+	top: 65%	
 //adventure section
 
 .adventure
@@ -241,27 +250,25 @@ ul
 	padding-top: 6%
 	&-text
 		display: flex
-		padding: 30px 0
-		margin-bottom: 6%
+		padding: 20px 0
+		margin-bottom: 7%
+		align-items: center
 		&__main
 			width: 52.5%
 			display: flex
 			flex-direction: column
-			font-weight: 700
-			font-size: 33px
-			line-height: 1.3
 		&__info
 			width: 45%
-			font-size: 15px
+			font-size: 18px
 			color: #CAD3E1
 			font-weight: 400
-			line-height: 1.5
+			line-height: 1.4
 	&-achieve
 		display: flex
 		background-color: #102C3C
 		background-image: url("../img/number-bg-image.png")
 		background-size: cover
-		padding: 4.2% 0
+		padding: 4.2% 0 3.4%
 		justify-content: space-between
 		text-align: center
 		position: relative
@@ -269,10 +276,10 @@ ul
 			content: ""
 			background: url("../img/number-img-1.png")
 			position: absolute
-			left: 0
-			top: 0
-			width: 30%
-			height: 10%
+			left: -43px
+			top: -43px
+			width: 300px
+			height: 100px
 			z-index: 10
 			background-size: contain
 			background-repeat: no-repeat
@@ -280,10 +287,10 @@ ul
 			content: ""
 			background: url("../img/number-img-2.png")
 			position: absolute
-			right: 0
-			top: 0
-			width: 30%
-			height: 10%
+			right: 11%
+			top: -22px
+			width: 300px
+			height: 100px
 			z-index: 10
 			background-size: contain
 			background-repeat: no-repeat			
@@ -301,32 +308,21 @@ ul
 	display: flex
 	justify-content: space-between
 	gap: 55px
-	align-items: center
+	align-items: start
 	padding-top: 7%
-	padding-bottom: 7%
+	padding-bottom: 7.3%
 	&-img
 		width: 50%
 	&-content
 		width: 50%
+		margin-top: 45px
 		&__text
-			padding-right: 13%
-		h3,
-		h3 span
-			font-weight: 700
-			line-height: 120%
-			font-size: 38px
-			letter-spacing: -0.075em
+			padding-right: 15%
+			p
+				line-height: 1.3
+				margin-bottom: 15px
 		h3
 			margin-bottom: 35px
-		p
-			font-weight: 400
-			font-size: 15px
-			line-height: 140%
-			margin-bottom: 20px
-			letter-spacing: 0.015em
-			&:last-child
-				margin-bottom: 0
-
 //howworks
 
 .how-works
@@ -336,10 +332,6 @@ ul
 	padding-bottom: 7%
 	&-title
 		margin-bottom: 5%
-		h3
-			font-weight: 700
-			font-size: 38px
-			letter-spacing: -0.04em
 	&-items
 		display: flex
 		justify-content: space-between
@@ -349,25 +341,30 @@ ul
 		position: relative
 		border-radius: 12px
 		max-width: 25% 
-		padding: 20px
+		padding: 20px 20px 6px
 		display: flex
 		flex-direction: column
 		align-items: center
 		min-height: 280px
 		text-align: center
-		font-size: 15px
 		line-height: 1.5
-		&__text
-			max-width: 96%
+		&:nth-of-type(2)				
+			.how-works-item__image
+				margin-bottom: 10px						
 		&__image
-			margin-bottom: 30px
+			margin-bottom: 23px
+
+				
+				
 		&__number
 			position: absolute
 			top: 0
 			left: 0
 			background-color: $rose
 			border-radius: 12px 0
-			padding: 10px 15px
+			padding: 5px 13px
+			font-weight: 600
+			font-size: 21px
 	&__delimiter
 		width: 10%	
 
@@ -398,12 +395,6 @@ ul
 			margin-bottom: 20px
 		&__text
 			margin-bottom: 42px
-			
-		h3
-			font-size: 32px
-			font-weight: 700
-			// margin-bottom: 45px
-			line-height: 1.5
 		p
 			font-size: 15px
 			line-height: 2	
@@ -429,7 +420,7 @@ ul
 			font-size: 24px
 			letter-spacing: 0.05
 	&__text
-		font-size: 16px
+		font-size: 15px
 		line-height: 1.4
 .social
 	width: 100%
