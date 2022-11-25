@@ -1,5 +1,15 @@
 "use strict";
 
+window.onload = function () {
+  console.log(123);
+  var preloader = $('.preloader');
+  var body = $('body');
+  setTimeout(function () {
+    preloader.fadeOut();
+    body.css('overflow-y', 'auto');
+  }, 1000);
+};
+
 $(document).ready(function () {
   $(".burger").click(function () {
     $(this).toggleClass("burger-active");

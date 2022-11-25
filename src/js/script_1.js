@@ -1,3 +1,13 @@
+window.onload = () => {
+  console.log(123);
+  let preloader = $('.preloader');
+  let body = $('body');
+
+  setTimeout(() => {
+    preloader.fadeOut();
+    body.css('overflow-y', 'auto')
+  }, 1000);
+}
 $(document).ready(function () {
   $(".burger").click(function () { 
     $(this).toggleClass("burger-active");
