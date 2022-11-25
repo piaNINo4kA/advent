@@ -9,4 +9,10 @@ $(document).ready(function () {
     var iconUrl = $(this).find(':selected').attr('data-icon');
     $(this).css('background', "url('".concat(iconUrl, "')"));
   });
+  var bottomArrow = $('.control-bottom');
+  bottomArrow.click(function () {
+    $([document.documentElement, document.body]).animate({
+      scrollTop: $("#adventure").offset().top
+    }, 1000);
+  });
 });

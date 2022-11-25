@@ -7,4 +7,12 @@ $(document).ready(function () {
     const iconUrl = $(this).find(':selected').attr('data-icon'); 
     $(this).css('background', `url('${iconUrl}')`); 
   });
+  let bottomArrow = $('.control-bottom')
+
+  bottomArrow.click(function() {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#adventure").offset().top
+    }, 1000);
+  })
+
 });

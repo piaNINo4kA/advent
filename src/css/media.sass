@@ -1,16 +1,63 @@
 
 // // =============== large
-// @media screen and (max-width: 1500px)
+// @media screen and (min-width: 1500px)
+
+// // ================ desktop
+@media screen and (max-width: 1540px)  
+  .header
+    .button
+      padding: 0 
+    &__notifications
+      margin-right: 1%
+    &__logo
+      margin-right: 3%     
+  .nav-list
+    column-gap: 15px
+  .header
+    &__button
+      max-height: 42px
+  .balance
+    &-wrap
+      max-height: 42px
+      &::after
+        right: 5px
+    &__select
+      padding-right: 5px 
 
 // =============== tablet 
-// @media screen and (max-width: 1199px)
+@media screen and (max-width: 1199px)
+  .control
+    &-left
+      left: 8%
+  .content
+    padding-left: 8%
+    padding-right: 8%
+  .header
+    &__logo
+      margin-right: 35%
+  .menu
+    display: none
+  .button
+    &_header
+      width: 20%  
+  .adventure
+    &-achieve
+      &::after
+        right: 2%
+    &-text
+      gap:10px   
+  .footer
+    &-content
+      max-width: 50%     
+
+  
 
 // =============== mobile
 // @media screen and (max-width: 767px)
 
 // @media screen and (max-width: 414px) pixel perfect
 
-@media screen and (max-width: 414px) 
+@media screen and (max-width: 768px) 
   body
     font-size: 15px
   .content   
@@ -48,6 +95,7 @@
       padding-right: 0px
       padding-left: 31px
       background-position-x: 10px !important
+      height: 34px
   .button
     letter-spacing: 0.06em
     &_header 
@@ -80,8 +128,10 @@
         margin-bottom: 26px
     &-image
       width: 100%
+      display: flex
+      justify-content: center
       &__picture
-        margin-bottom: 5px
+        margin-bottom: 17px
   .control
     &-left
       left: 20px
@@ -113,9 +163,15 @@
       padding: 52px 15px 30px
       
       &::before
-        display: none
+        left: -26px
+        top: -15px
+        width: 150px
+        height: 50px
       &::after
-        display: none
+        right: 2%
+        top: -12px
+        width: 190px
+        height: 65px
       &__item
         width: 45%
         min-height: 112px
@@ -128,6 +184,7 @@
     flex-direction: column-reverse
     gap: 27px
     margin-bottom: 13%
+    align-items: center
     &-content
       width: 100%
       margin-top: 30px
@@ -138,17 +195,17 @@
       &__text
         padding-right: 0  
     &-img
-      width: 100%            
+      width: auto            
   //how works
   .how-works
-    margin-bottom: 32px
+    margin-bottom: 50px
     &-items
       flex-direction: column      
     &-item
       max-width: 100%  
       width: 100%
       min-height: 260px
-      margin-bottom: 22px
+      margin-bottom: 3px
       padding: 20px 8% 6px
       max-height: 260px
       &__image
@@ -160,9 +217,15 @@
         font-size: 18px
         letter-spacing: -0.01em
     &-title
-      margin-bottom: 30px  
+      margin-bottom: 30px
   .delimiter
-    transform: rotate(90deg)    
+    display: none      
+  .delimiter-mob
+    display: block
+  .first-del
+    transform: translate(-86px, 0px)
+  .second-del
+    transform: translate(92px, 0px)  
   //trip
   .trip
     &-image
@@ -191,9 +254,11 @@
     &-container
       flex-direction: column
       background-image: url(../img/usa_banner-mob.jpg)
+      padding-bottom: 30px
   //footer
   .footer
-    padding-top: 86px
+    padding-top: 55px
+    padding-bottom: 90px
     &-content
       max-width: 100%
       &__title
@@ -201,4 +266,12 @@
       &__text
         font-size: 18px
   .social
-    margin-bottom: 19px        
+    margin-bottom: 19px      
+  //small mob
+@media screen and (max-width: 400px)
+  .button
+    &_header
+      font-size: 8px
+  .balance
+    &__select
+      font-size: 8px  
