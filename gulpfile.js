@@ -9,6 +9,8 @@ const gulp = require('gulp'),
 		sass = require('gulp-sass')(require('sass'))
 		imagemin = require('gulp-imagemin'),
 		babel = require('gulp-babel');
+const fs = require('fs');
+const path = require('path');
 
 
 const php = [
@@ -39,9 +41,32 @@ const fonts = [
  './fonts/*',
 ];
 
+function parseInputData(dataString) {
+	return dataString.split("\n") 
+      .map(item => { 
+        const arr = item.split("\t"); 
+        return { 
+          "day": arr[0], 
+          "type": arr[1], 
+          "title": arr[2], 
+          "link": arr[3], 
+          "promocode": arr[4], 
+          "backTitle": arr[5], 
+          "list": arr[6], 
+          "terms": arr[7], 
+          "gamePic": arr[8]         
+        } 
+      })
+}
+
 function Html() {
+	const dataString = fs.readFileSync("src/data.txt").toString();
+	const dataJSON = parseInputData(dataString);
 	return gulp.src('./src/*.pug')
 				.pipe(pug({
+					locals: {
+						dataJSON,
+					},
 					pretty: true
 				}))
 				.pipe(gulp.dest('./build'))
