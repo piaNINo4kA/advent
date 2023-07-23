@@ -1,17 +1,9 @@
 include bemto/bemto.pug
+include _partials/card.pug
 
 //- include partials
 
 //- general
-include _partials/preloader.pug
-include _pages/general-page.pug
-include _partials/header.pug
-include _partials/footer.pug
-include _partials/main.pug
-include _partials/adventure.pug
-include _partials/riches.pug
-include _partials/howworks.pug
-include _partials/trip.pug
 
 
 
@@ -31,14 +23,15 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 
 	body
-		+header
-		+main
-		+adventure
-		+riches
-		+howWorks
-		+trip
-		+footer
-		+preloader
+		+b.advent 
+			+b.banner 
+			+b.cards-container 
+				each val in dataJSON
+					+card(val.title, val.day)
+					- var data = JSON.stringify(val)
+					script.
+						var newId = "#{data}"
+
 		
 
 

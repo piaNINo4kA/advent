@@ -1,0 +1,3 @@
+3	fake	Find hidden jungle riches!	https://bluechip.io/game/jungle-stripes-x9					https://cdn.aglty.io/bluechip-prod-v2/promotion/advent/advent-game-upd-5.png	PLAY
+4	real	100% up to €60	https://bluechip.io/rewards	YOUR100	Get |100% up to €60| in Slots!	In Deposit form: pick bonus, pay €30/Get 100% up to €60 in Slots/Activate in the Rewards	Dates: Available only today, until 23:59 UTC./Max Bonus Amount: €60./Max win from Bonus Money: €90./Wager: x40 only Slots		ACTIVATE
+5	fake	Unleash the Kraken!	https://bluechip.io/nz-en/game/kraken-conquest-9j					https://cdn.aglty.io/bluechip-prod-v2/promotion/advent/game-ca-1.png	PLAY

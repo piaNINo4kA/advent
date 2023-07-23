@@ -9,11 +9,7 @@ const gulp = require('gulp'),
 		sass = require('gulp-sass')(require('sass'))
 		imagemin = require('gulp-imagemin'),
 		babel = require('gulp-babel');
-
-
-const php = [
-	'./src/send.php'
-];
+const fs = require('fs');
 
 const cssFiles = [
 	'./node_modules/normalize.css/normalize.css',
@@ -22,7 +18,7 @@ const cssFiles = [
 ];
 
 const jsFiles = [
-	'./src/js/script_1.js'
+	'./src/js/*.js'
 ];
 
 const libs = [
@@ -39,9 +35,36 @@ const fonts = [
  './fonts/*',
 ];
 
+function parseInputData(dataString) {
+	return dataString.split("\n") 
+      .map(item => { 
+        const arr = item.split("\t"); 
+        return { 
+          "day": arr[0], 
+          "type": arr[1], 
+          "title": arr[2], 
+          "link": arr[3], 
+          "promocode": arr[4], 
+          "backTitle": arr[5], 
+          "list": arr[6], 
+          "terms": arr[7], 
+          "gamePic": arr[8]         
+        } 
+      })
+}
+
+function readDataJSON() {
+	const dataString = fs.readFileSync("src/data.txt").toString();
+	return parseInputData(dataString);
+}
+
 function Html() {
+	const dataJSON = readDataJSON()
 	return gulp.src('./src/*.pug')
 				.pipe(pug({
+					locals: {
+						dataJSON,
+					},
 					pretty: true
 				}))
 				.pipe(gulp.dest('./build'))
@@ -65,6 +88,13 @@ function Styles() {
 
 
 function Script() {
+	const filePath = 'src/js/yyypr.js'
+	const dataJSON = readDataJSON()
+	const data = "var promocodes = " + JSON.stringify(dataJSON.map(item => item.promocode));
+	if (fs.existsSync(filePath)) {
+		fs.unlinkSync(filePath);
+	}
+	fs.writeFileSync(filePath, data);
 	return gulp.src(jsFiles)
 				.pipe(concat('all_js.js'))
 				.pipe(babel({
@@ -118,7 +148,56 @@ function Clean() {
 	return del(['build/*']);
 }
 
+// region build pug + styles + js
 
+// directory with general-page pug file
+const pages_dir = './src/_pages/';
+// directory where to put result of pug compilation
+const pug_result_dir = './prod/';
+// name of file with all styles that will be used in general-page.pug to include styles from ./src/css/ folder
+const pug_styles_file = "all_style.css"
+
+// process general-page.pug file from ./src/_pages/ folder
+function processPagesPug() {
+	const dataJSON = readDataJSON()
+	return gulp.src(pages_dir + '*.pug')
+				.pipe(pug({
+					locals: {
+						dataJSON,
+					},
+					pretty: true,
+				}))
+				.pipe(gulp.dest(pug_result_dir));
+}
+
+// process styles from ./src/css/ folder and put them into one file that will be included in general-page.pug
+// created file is not needed for production, it is used only for build pug
+function processPagesPugStyles() {
+	return gulp.src(cssFiles)
+		.pipe(sass.sync().on('error', sass.logError))
+		.pipe(concat(pug_styles_file))
+		.pipe(autoprefixer({
+			cascade: false
+		}))
+		// .pipe(cleanCSS({
+		// 	level: 0
+		// }))
+		.pipe(gulp.dest(pages_dir))
+		.pipe(browserSync.stream());
+}
+
+// clean file with all styles that was created for build pug
+function cleanPagesPugBuild() {
+	return del([pages_dir + pug_styles_file]);
+}
+
+gulp.task('processPagesPug', processPagesPug);
+gulp.task('processPagesPugStyles', processPagesPugStyles);
+gulp.task('cleanPagesPugBuild', cleanPagesPugBuild);
+
+gulp.task('stage', gulp.series(processPagesPugStyles, processPagesPug, cleanPagesPugBuild));
+
+// end build pug + styles + js
 
 gulp.task('Html', Html);
 gulp.task('Fonts', Fonts);

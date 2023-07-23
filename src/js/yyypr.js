@@ -1,0 +1,1 @@
+var promocodes = ["","YOUR100",""]

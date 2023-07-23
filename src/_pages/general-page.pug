@@ -1,7 +1,10 @@
+include ../bemto/bemto.pug
 include ../_screens/main_screen.pug
+include ../_partials/card.pug
 
 
-mixin general-page
-    +b.general-page
-        +main_screen
-
+general-page
+    each val in dataJSON
+        +card(val.title, val.day)
+style
+    include ./all_style.css
