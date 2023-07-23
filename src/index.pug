@@ -26,13 +26,62 @@ html
 		+b.advent 
 			+b.banner 
 			+b.cards-container 
-				each val in dataJSON
-					+card(val.title, val.day)
-					- var data = JSON.stringify(val)
-					script.
-						var newId = "#{data}"
+			+b#slider.slider
+				+b.wrapper
+					+b.slides#slides
+						each item in dataJSON
+							+card(item.title, item.day, item.type)
+				+b.A#prev.control.prev
+				+b.A#next.control.next
 
-		
+		//- .general-page
+		//- 	#slider.controls
+		//- 		.controls-wrapper
+		//- 			#slides.controls-container
+		//- 				.btn-radio.card-dark
+		//- 					input#cashback.radio-button.radio-input(type='radio' name='color' value='cashback')
+		//- 					label.controls-label(for='ipl')
+		//- 						img.radio-picture(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/icon-1.svg')
+		//- 						p.radio-text IPL Cashback Offer
+		//- 						p.radio-text-button
+		//- 							span.radio-text-button-show Show More
+		//- 							img.radio-text-button-arrow(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/arrow-right.svg')
+		//- 				.btn-radio.card-dark
+		//- 					input#schedule.radio-button.radio-input(type='radio' name='color' value='schedule')
+		//- 					label.controls-label(for='ipl')
+		//- 						img.radio-picture(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/icon-2.svg')
+		//- 						p.radio-text IPL Schedule
+		//- 						p.radio-text-button
+		//- 							span.radio-text-button-show Show More
+		//- 							img.radio-text-button-arrow(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/arrow-right.svg')
+		//- 				.btn-radio.card-dark
+		//- 					input#battle.radio-button.radio-input(type='radio' name='color' value='battle')
+		//- 					label.controls-label(for='ipl')
+		//- 						img.radio-picture(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/icon-3.svg')
+		//- 						p.radio-text Big IPL Battle Tournament
+		//- 						p.radio-text-button
+		//- 							span.radio-text-button-show Show More
+		//- 							img.radio-text-button-arrow(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/arrow-right.svg')
+		//- 				.btn-radio.card-dark
+		//- 					input#promocodes.radio-button.radio-input(type='radio' name='color' value='promocodes')
+		//- 					label.controls-label(for='ipl')
+		//- 						img.radio-picture(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/icon-4.svg')
+		//- 						p.radio-text IPL Promo Codes for Free Bet
+		//- 						p.radio-text-button
+		//- 							span.radio-text-button-show Show More
+		//- 							img.radio-text-button-arrow(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/arrow-right.svg')
+		//- 				.btn-radio.card-dark
+		//- 					input#terms.radio-button.radio-input(type='radio' name='color' value='terms')
+		//- 					label.controls-label(for='ipl')
+		//- 						img.radio-picture(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/icon-5.svg')
+		//- 						p.radio-text IPL Teams and Captains
+		//- 						p.radio-text-button
+		//- 							span.radio-text-button-show Show More
+		//- 							img.radio-text-button-arrow(src='https://cdn.aglty.io/bluechip-prod-v2/monthly-events/arrow-right.svg')
+		//- 		a#prev-ipl-slider-button.control.prev
+		//- 		a#next-ipl-slider-button.control.next
+
+
 
 
 		//- libs js

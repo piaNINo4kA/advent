@@ -1,8 +1,8 @@
-mixin card(title, date) 
-  +b.card 
+mixin card(title, date, type)
+  +b.card(class= type).slide
     +b.card-item 
-      +e.date= date 
+      +e.date= date
       +e.BUTTON Button text
     +b.popup
-      +e.title= title 
+      +e.title= title
       +e.BUTTON Popup button text

@@ -2,51 +2,82 @@ body
 	max-width: 100%
 	// overflow-x: hidden
 	background-color: #0B1D27
-	color: white
+	color: black
 	font-family: 'Jost'
 	font-size: 18px
-	// overflow: hidden
+.advent	
+	.card
+		background: white
+	.popup
+		position: absolute	
+		width: 100vw
+		height: 100vh
+		background: blue
+		color: black
+		top: 0
+		left: 0
+		opacity: 0
+		display: flex
+		flex-direction: column
+	.slider
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2)
 
-// *, *:after, *:before
-// 	box-sizing: border-box
-// 	font-family: 'Jost', sans-serif
-// 	padding: 0
-// 	margin: 0
-// 	text-decoration: none
-// 	color: inherit
-// 	max-width: 100%
-// 	font-weight: 300
-// 	outline: none
-// 	border: none
-// h1,h2,h3,h4,h5,h6
-// 	margin: 0
-// 	padding: 0
-// ul
-// 	li
-// 		list-style: none
-
-.card
-	&-item
+	.wrapper
+		overflow: hidden
+		position: relative
 		width: 225px
 		height: 260px
-		background-color: white
-		border: 2px solid red
+		z-index: 1
+
+	.slides
 		display: flex
-		justify-content: center
+		position: relative
+		top: 0
+		left: -225px
+		width: 10000px
+
+		&.shifting
+			transition: left 0.2s ease-out
+
+	.slide
+		width: 225px
+		height: 260px
+		cursor: pointer
+		display: flex
 		align-items: center
-		color: black
-		flex-direction: column
-.popup
-	position: absolute	
-	width: 100vw
-	height: 100vh
-	background: blue
-	color: black
-	top: 0
-	left: 0
-	opacity: 0
-	display: flex
-	flex-direction: column
+		justify-content: center
+		transition: all 1s
+		position: relative
+		border-radius: 2px
 
+	.control
+		position: absolute
+		top: 50%
+		width: 50px
+		height: 50px
+		background: #fff
+		border-radius: 50px
+		margin-top: -20px
+		box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3)
+		z-index: 2
 
+	.prev, .next
+		background-size: 22px
+		background-position: center
+		background-repeat: no-repeat
+		cursor: pointer
 
+	.prev
+		background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronLeft-512.png)
+		left: -20px
+
+	.next
+		background-image: url(https://cdn0.iconfinder.com/data/icons/navigation-set-arrows-part-one/32/ChevronRight-512.png)
+		right: -20px
+
+	.prev:active, .next:active
+		transform: scale(0.8)
