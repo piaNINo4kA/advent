@@ -145,7 +145,7 @@ function Watch() {
 }
 
 function Clean() {
-	return del(['build/*']);
+	return del(['build/*', 'prod/*']);
 }
 
 // region build pug + styles + js
@@ -154,8 +154,6 @@ function Clean() {
 const pages_dir = './src/_pages/';
 // directory where to put result of pug compilation
 const pug_result_dir = './prod/';
-// name of file with all styles that will be used in general-page.pug to include styles from ./src/css/ folder
-const pug_styles_file = "all_style.css"
 
 // process general-page.pug file from ./src/_pages/ folder
 function processPagesPug() {
@@ -170,33 +168,7 @@ function processPagesPug() {
 				.pipe(gulp.dest(pug_result_dir));
 }
 
-// process styles from ./src/css/ folder and put them into one file that will be included in general-page.pug
-// created file is not needed for production, it is used only for build pug
-function processPagesPugStyles() {
-	return gulp.src(cssFiles)
-		.pipe(sass.sync().on('error', sass.logError))
-		.pipe(concat(pug_styles_file))
-		.pipe(autoprefixer({
-			cascade: false
-		}))
-		// .pipe(cleanCSS({
-		// 	level: 0
-		// }))
-		.pipe(gulp.dest(pages_dir))
-		.pipe(browserSync.stream());
-}
-
-// clean file with all styles that was created for build pug
-function cleanPagesPugBuild() {
-	return del([pages_dir + pug_styles_file]);
-}
-
 gulp.task('processPagesPug', processPagesPug);
-gulp.task('processPagesPugStyles', processPagesPugStyles);
-gulp.task('cleanPagesPugBuild', cleanPagesPugBuild);
-
-gulp.task('stage', gulp.series(processPagesPugStyles, processPagesPug, cleanPagesPugBuild));
-
 // end build pug + styles + js
 
 gulp.task('Html', Html);
@@ -211,3 +183,4 @@ gulp.task('build', gulp.series(Clean,
 							gulp.parallel(Styles, Script, ImgMIn, Html, Fonts, Libs, ImgMIn))
 						);
 gulp.task('dev', gulp.series('build', Watch));
+gulp.task('stage', gulp.series(Clean, Styles, Script, processPagesPug));
