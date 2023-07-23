@@ -1,0 +1,1 @@
+var promocodes = ["","","","YOUR100","","CASH75","","LUCKY10","","FREE15","","AZTECS","","AERO30","","LIVE100","","RICH110","","BUFFALO","","WIN120","","MEGA150","","SPINFUN","","MEDAL","","LIVIN30","INSLOT"]

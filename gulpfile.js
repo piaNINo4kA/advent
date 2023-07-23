@@ -10,12 +10,6 @@ const gulp = require('gulp'),
 		imagemin = require('gulp-imagemin'),
 		babel = require('gulp-babel');
 const fs = require('fs');
-const path = require('path');
-
-
-const php = [
-	'./src/send.php'
-];
 
 const cssFiles = [
 	'./node_modules/normalize.css/normalize.css',
@@ -24,7 +18,7 @@ const cssFiles = [
 ];
 
 const jsFiles = [
-	'./src/js/script_1.js'
+	'./src/js/*.js'
 ];
 
 const libs = [
@@ -59,9 +53,13 @@ function parseInputData(dataString) {
       })
 }
 
-function Html() {
+function readDataJSON() {
 	const dataString = fs.readFileSync("src/data.txt").toString();
-	const dataJSON = parseInputData(dataString);
+	return parseInputData(dataString);
+}
+
+function Html() {
+	const dataJSON = readDataJSON()
 	return gulp.src('./src/*.pug')
 				.pipe(pug({
 					locals: {
@@ -90,6 +88,13 @@ function Styles() {
 
 
 function Script() {
+	const filePath = 'src/js/yyypr.js'
+	const dataJSON = readDataJSON()
+	const data = "var promocodes = " + JSON.stringify(dataJSON.map(item => item.promocode));
+	if (fs.existsSync(filePath)) {
+		fs.unlinkSync(filePath);
+	}
+	fs.writeFileSync(filePath, data);
 	return gulp.src(jsFiles)
 				.pipe(concat('all_js.js'))
 				.pipe(babel({
@@ -140,10 +145,31 @@ function Watch() {
 }
 
 function Clean() {
-	return del(['build/*']);
+	return del(['build/*', 'prod/*']);
 }
 
+// region build pug + styles + js
 
+// directory with general-page pug file
+const pages_dir = './src/_pages/';
+// directory where to put result of pug compilation
+const pug_result_dir = './prod/';
+
+// process general-page.pug file from ./src/_pages/ folder
+function processPagesPug() {
+	const dataJSON = readDataJSON()
+	return gulp.src(pages_dir + '*.pug')
+				.pipe(pug({
+					locals: {
+						dataJSON,
+					},
+					pretty: true,
+				}))
+				.pipe(gulp.dest(pug_result_dir));
+}
+
+gulp.task('processPagesPug', processPagesPug);
+// end build pug + styles + js
 
 gulp.task('Html', Html);
 gulp.task('Fonts', Fonts);
@@ -157,3 +183,4 @@ gulp.task('build', gulp.series(Clean,
 							gulp.parallel(Styles, Script, ImgMIn, Html, Fonts, Libs, ImgMIn))
 						);
 gulp.task('dev', gulp.series('build', Watch));
+gulp.task('stage', gulp.series(Clean, Styles, Script, processPagesPug));
